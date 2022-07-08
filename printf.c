@@ -6,7 +6,7 @@
 /*   By: kokrokhi <kokrokhi@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:35:24 by kokrokhi          #+#    #+#             */
-/*   Updated: 2022/07/08 17:51:31 by kokrokhi         ###   ########.fr       */
+/*   Updated: 2022/07/08 18:46:00 by kokrokhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,17 @@ int ft_formats(va_list args, const char format)
 	if (format == 'c')
 		length += ft_printchar(va_arg(args, int));
 	else if (format == 's')
-		length += ft_printchar(va_arg(args, int));
+		length += ft_printstring(va_arg(args, char *));
+	else if (format == '%')
+		length += ft_printchar('%');
+	else if (format == 'p')
+		length += ft_printvoid(va_arg(args, void *)); // unsigned int?
+	else if (format == 'd' || format == 'i')
+		length += ft_printdecimal(va_arg(args, int));
+	else if (format == 'x' || format == 'X')
+		length += ft_printhex(va_arg(args, unsigned int), format);
+	else if (format == 'p')
+		length += ft_printunsigned(va_arg(args, unsigned int));
 
 	return (length);
 }
@@ -41,10 +51,7 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format == '%')
-		{
-			format++;
-			length += ft_formats(args, format);
-		}
+			length += ft_formats(args, ++format);
 		else
 			length += ft_putchar(format);
 		format++;
