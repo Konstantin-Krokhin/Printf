@@ -6,11 +6,11 @@
 #    By: kokrokhi <kokrokhi@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 21:37:09 by kokrokhi          #+#    #+#              #
-#    Updated: 2022/07/07 21:37:11 by kokrokhi         ###   ########.fr        #
+#    Updated: 2022/07/08 23:37:25 by kokrokhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			= printf.c
+SRCS			= ft_printdecimal.c ft_printf.c ft_printhex.c ft_printstring.c ft_printunsigned.c ft_printvoid.c
 OBJS			= $(SRCS:.c=.o)
 CC				= gcc
 RM				= rm -f
